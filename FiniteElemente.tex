@@ -1,0 +1,47 @@
+\documentclass[a4paper,twoside,DIV15,BCOR12mm]{scrbook}
+\usepackage{ana}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage{cancel}
+%\usepackage{mathabx}
+%Operatoren hier definieren...
+%\DeclareMathOperator{\Bild}{Bild}
+
+\lecturer{Prof. Dr. Willy Dörfler }
+\semester{Wintersemester 13/14}
+\scriptstate{in progress}
+
+\pdfinfo{
+	/Author (Pascal Kraft)
+	/Title   (Finite Elemente)
+	/Subject (Numerik - Finite Elemente Methoden)
+	/Keywords (Numerik, Finite Elemente, KIT, Vorlesung, Mitschrieb)
+}
+
+\author{Pascal Kraft}
+\title{Finite Elemente}
+\makeindex
+
+\begin{document}
+\maketitle
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+%\chapter{Inhaltsverzeichnis}
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+\tableofcontents
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\chaptername}{Â§}
+\setcounter{chapter}{-1}
+
+\include{Kapitel0}
+\include{Kapitel1}
+
+
+\appendix 
+\chapter{Sätze}
+\listtheorems{satz,wichtigedefinition}
+
+\renewcommand{\indexname}{Stichwortverzeichnis}
+\addcontentsline{toc}{chapter}{Stichwortverzeichnis}
+\printindex
+\end{document}
