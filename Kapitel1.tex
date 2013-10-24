@@ -1,3 +1,32 @@
-\chapter{Topologische Grundlagen in der Funktionentheorie}
-\section{Homologie und Homotopie}
-
+\chapter{Variationsgleichung}
+\section{Modellierung mit partiellen Dfferentialgleichungen}
+\subsubsection{Wärmeleitungsgleichung}
+Wir betrachten einen Wärmeleiter, der am einen Ende die Temperatur $T_1$ und am anderen Ende die Temperatur $T_2$ hat. O.B.d.A. $T_1 > T_2$. Dann fließt Wärme von 1 nach 2. Sei weiter $\Omega$ ein Gebiet,
+\[ u: (0,T)\times \overline{\Omega} \rightarrow \MdR_{>0} \]
+sei die Temperatur abhängig von Zeit und Ort. Eine Temperaturdifferenz erzeugt einen Wärmefluss $q=-a \nabla u$ ($a>0$ Materialkonstante Wärmeleitfähigkeit). Es ergibt sich die Bilanzgleichung
+\[ \frac{\mathrm d}{\mathrm dt} \int_V \rho = \int_{\partial V} q \cdot n\]
+wobei $V$ das Volumen, $\rho$ die Dichte, $q$ der Wärmefluss und $n$ die äußere Normale ist. Es folgt
+\[\int_V \left( \partial_t \rho + \nabla \cdot q\right) = 0 \quad \forall V \subset \Omega\]
+und daraus, da das Integral für beliebige Gebiete $V$ gilt, auch
+\[\partial_t \rho + \nabla \cdot q = 0\]
+In oben beschriebenen Fall gelten $\rho = u$ und $q = -a \grad u$ also
+\[ \partial_t u - \nabla\cdot (a\nabla u) = 0 \]
+in $\Omega$. Wir erwarten einen Temperaturausgleich für große Zeiten, also einen stationären Zustand für $t \to \infty$, d.h. $\partial_t u \to 0$. Eingesetzt finden wir
+\begin{eqnarray*}
+- \nabla (a \nabla u) & = 0 & \text{ in } \Omega\\
+u & = u^D & \text{ auf } \partial \Omega\\
+-a \Delta u & = 0 & \text{ (falls } a\equiv \mathrm const \text{ )}
+\end{eqnarray*}
+\paragraph{'Quantity of Interest':}
+$\int_W q \cdot n$ wobei $W \subset \partial \Omega$ das Randstück mit interessantem Wärmefluss ist. Die 'Quantity of Interest' beschreibt einen Wärmestrom über einen Teil des Randes.
+\subsection{Elektrostatik}
+Wir bezeichnen mit $\rho$ die Ladungsdichte, die ein elektrisches Feld $E$ verursacht. Aus den Maxwellgleichungen folgt:
+\[ -\nabla \cdot (aE) = \rho \]
+wobei $a$ (in der Physik $\epsilon$) die Permittivität darstellt. Oft fordert man ein "`Wirbelfreies"' elektrisches Feld, also $\mathrm rot (E) = \nabla \times E = 0$. Daraus ergibt sich 
+\begin{eqnarray*}
+\exists u: E & = & -\nabla u\\
+- \nabla \cdot (a \nabla u) & = & \rho \text{ in } \Omega \\
+u & = & u^D \text{ auf } \partial \Omega
+\end{eqnarray*}
+Im Fall $\partial \Omega = \Gamma^D \dot{\cup} \Gamma^N$ setzen wir\\
+\[\begin{cases}u^D & \text{ auf } \Gamma^D \\ an \cdot \nabla u \equiv a \cdot \partial_n u = 0 & \text{ auf } \Gamma^N \end{cases}\] 
