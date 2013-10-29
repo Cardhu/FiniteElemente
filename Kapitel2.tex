@@ -1,0 +1,17 @@
+\section{Ritz-Galerkin-Methode}
+Bisher haben wir Finite-Differenzen-Methoden(FDM) betrachtet.
+\begin{bemerkung}[Probleme mit FDM]
+\begin{itemize}
+\item Wir nutzen reguläre Gitter, dies kann zu Problemen bei kurvigem Rand und hoher Ordnung führen.
+\item $a$ ist eventuell unstetig.
+\item Wir erhalten eventuell nichtreguläre Lösungen ($u\notin C^4$!)
+\end{itemize}
+\subsection{Das diskrete Problem}
+$V_N \sqsubset V$ mit $\dim(V_N)=N \in \MdN$\\
+Konformer Ansatz im Gegensatz zum nicht-konformen Ansatz.\\
+$V_N \sqsubset V$. Im Folgenden sei immer $u^D = 0$.\\
+Diskretes Problem: Suche $u_N \in V_N$ mit 
+\[A(u_N, u_N) = F[v_N] \forall v_N \in V_N\]
+Mit Vorraussetzungen wie an $A$, $F$ wie vorher folgt die Existenz von $u_N$ nach Lax-Milgram. Außerdem finden wir
+\[||u_N||_{H^1(\Omega)} \leq \underbrace{\frac{\alpha_F}{\alpha_0}}_{\text{unabhängig von }N}.\]
+Sei ${\psi_i}_{i \in {1,...,N}}$ eine Basis von $V_N$
