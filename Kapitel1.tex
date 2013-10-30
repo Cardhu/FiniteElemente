@@ -1,5 +1,5 @@
 \chapter{Variationsgleichung}
-\section{Modellierung mit partiellen Dfferentialgleichungen}
+\section{Modellierung mit partiellen Differentialgleichungen}
 \subsubsection{Wärmeleitungsgleichung}
 Wir betrachten einen Wärmeleiter, der am einen Ende die Temperatur $T_1$ und am anderen Ende die Temperatur $T_2$ hat. O.B.d.A. $T_1 > T_2$. Dann fließt Wärme von 1 nach 2. Sei weiter $\Omega$ ein Gebiet,
 \[ u: (0,T)\times \overline{\Omega} \rightarrow \MdR_{>0} \]
@@ -94,7 +94,40 @@ der Spezialfall $a=1, c=0$ führt auf
 \begin{eqnarray}
 -\Delta u &= f \text{ in } \Omega\\
 u &= u^D \text{ auf } \partial \Omega
-\label{Poissonproblem}
+\label{Poisson-Problem}
 \end{eqnarray}
 das \begriff{Poisson-Problem}.\\
-Die Vorgabe von $u=u^D$ auf $\partial \Omega$ heißt \begriff{Dirichlet-Problem}. Man kann eine schwache Form wie folgt herleiten: Multipliziere die Differentialgleichung mit einer Testfunktion $v \in$ 
+Die Vorgabe von $u=u^D$ auf $\partial \Omega$ heißt \begriff{Dirichlet-Problem}. Man kann eine schwache Form wie folgt herleiten: Multipliziere die Differentialgleichung mit einer Testfunktion $v \in C_0^{\infty}(\Omega)$
+\[ \int_{\Omega} a \nabla u \cdot \nabla v +cuv  = \int_{\Omega} fv \qquad \forall v \in C_0^{\infty}(\Omega)\]
+\begin{paragraph}{Ziel:} Finde eine Lösung $u$ dieses Problems!\end{paragraph}
+\begin{definition}[Sobolevräume]
+Sei $\Omega \subset \MdR^d$ und $\partial \Omega$ Lipschitz.
+\begin{eqnarray}
+W^{1,2}(\Omega) := H^1(\Omega) &:= {v: \Omega \rightarrow \MdR, v \text{ messbar }, ||v||_{W^{1,2}(\Omega)} < \infty}\\
+||v||_{W^{1,2}(\Omega)} &:= \left( || v ||_{L^2(\Omega)}^2 + ||\nabla v||^2_{L^2(\Omega)} \right)^{\frac{1}{2}}\\
+||v||^2_{L^2(\Omega)} &:= \int_{\Omega} |v|^2\\
+\label{eq:}
+\end{eqnarray} 
+Analog definiert man $W^{m,p}$ für $m\in \MdR$, $p\in [1, \infty]$. Detailliert wird dies zum Beispiel in Vorlesungen und Skripten zu Rand- und Eigenwertproblemen behandelt. Man nennt $W$ \begriff{Sobolevräume} und $L$ \begriff{Lebesqueräume}.
+\end{definition}
+\begin{definition}
+Seien $a,c \in L^{\infty}$ und $f\in L^2(\Omega)$.
+\[A: H^1(\Omega) \times H^1(\Omega) \to \MdR : A[v,w]:= \int_{\Omega} (a \nabla v \cdot \nabla w + cvu) \]
+sei eine Bilinearform und 
+\[F: H^1(\Omega) \to \MdR, F[v] := \int_{\Omega} fv\]
+sei linear.
+\end{definition}
+\begin{theorem}[Existenz einer Lösung]
+Seien $f,a,c$ wie in der obigen Definition. Sei ferner $a\geq a_0 > 0$ fast überall, $c\geq 0$ fast überall in $\overline{\Omega}$. Es gebe $u^D: \overline{\Omega} \to \MdR$ welches die Randbedingung realisiert. Dann erfüllen $A$ und $F$ die folgenden Bedingungen:\\
+\begin{enumerate}
+	\item $A$ ist koerziv, d.h.
+	\[A[v,v] \geq \alpha_0 ||v||^2_{H^1(\Omega)} \qquad \forall v \in H^1(\Omega)\]
+	\item $A$ ist stetig
+	\[|A[v,w]| =\leq \alpha_A ||v||_{H^1(\Omega)} ||w||_{H^1(\Omega)}\]
+	\item $F$ ist stetig
+	\[|F[v]| =\leq \alpha_F ||v||_{H^1(\Omega)} \]
+\end{enumerate}
+$\forall v,w \in H^1(\Omega), 0< \alpha_0 < \alpha_A, 0 \leq  \alpha_F$.\\
+Dann existiert ein eindeutiges $u \in H^1(\Omega)$ welches das Variationsproblem löst und 
+\[||u||_{H^1(\Omega)} \leq \frac{\alpha_F}{\alpha_0}\]
+\end{theorem}

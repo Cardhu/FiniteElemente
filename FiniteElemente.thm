@@ -1,8 +1,11 @@
-\contentsline {bemerkung}{{Bemerkung}{2.{1}}{Probleme mit FDM}}{11}{satz.22}
-\contentsline {definition}{{Definition}{2.{2}}{Energienorm}}{11}{satz.24}
-\contentsline {lemma}{{Lemma}{2.{3}}{Cea-Lemma}}{12}{satz.26}
-\contentsline {beweis}{{Beweis}{1}{}}{12}{beweis.27}
-\contentsline {korollar}{{Korollar}{2.{4}}{Konvergenz}}{12}{satz.29}
-\contentsline {beweis}{{Beweis}{2}{Koerzivität}}{12}{beweis.30}
-\contentsline {bemerkung}{{Bemerkung}{2.{5}}{Quasi-Optimalität}}{13}{satz.31}
-\contentsline {lemma}{{Lemma}{2.{6}}{Das Strang-Lemma}}{13}{satz.35}
+\contentsline {definition}{{Definition}{1.{1}}{Sobolevräume}}{10}{satz.22}
+\contentsline {definition}{{Definition}{1.{2}}{}}{10}{satz.24}
+\contentsline {theorem}{{Theorem}{1.{3}}{Existenz einer Lösung}}{11}{satz.25}
+\contentsline {bemerkung}{{Bemerkung}{2.{1}}{Probleme mit FDM}}{13}{satz.30}
+\contentsline {definition}{{Definition}{2.{2}}{Energienorm}}{13}{satz.32}
+\contentsline {lemma}{{Lemma}{2.{3}}{Cea-Lemma}}{14}{satz.34}
+\contentsline {beweis}{{Beweis}{1}{}}{14}{beweis.35}
+\contentsline {korollar}{{Korollar}{2.{4}}{Konvergenz}}{14}{satz.37}
+\contentsline {beweis}{{Beweis}{2}{Koerzivität}}{14}{beweis.38}
+\contentsline {bemerkung}{{Bemerkung}{2.{5}}{Quasi-Optimalität}}{15}{satz.39}
+\contentsline {lemma}{{Lemma}{2.{6}}{Das Strang-Lemma}}{15}{satz.43}
