@@ -1,77 +1,81 @@
-\section{Ritz-Galerkin-Methode}
+\chapter{Ritz-Galerkin-Methode}
 Bisher haben wir Finite-Differenzen-Methoden(FDM) betrachtet.
 \begin{bemerkung}[Probleme mit FDM]
 \begin{itemize}
-\item Wir nutzen regulÃ¤re Gitter, dies kann zu Problemen bei kurvigem Rand und hoher Ordnung fÃ¼hren.
+\item Wir nutzen reguläre Gitter, dies kann zu Problemen bei kurvigem Rand und hoher Ordnung führen.
 \item $a$ ist eventuell unstetig.
-\item Wir erhalten eventuell nichtregulÃ¤re LÃ¶sungen ($u\notin C^4$!)
+\item Wir erhalten eventuell nichtreguläre Lösungen ($u\notin C^4$!)
 \end{itemize}
-\subsection{Das diskrete Problem}
+\end{bemerkung}
+\section{Das diskrete Problem}
 $V_N \sqsubset V$ mit $\dim(V_N)=N \in \MdN$\\
 Konformer Ansatz im Gegensatz zum nicht-konformen Ansatz.\\
 $V_N \sqsubset V$. Im Folgenden sei immer $u^D = 0$.\\
 Diskretes Problem: Suche $u_N \in V_N$ mit 
 \[A(u_N, u_N) = F[v_N] \forall v_N \in V_N\]
-Mit Vorraussetzungen wie an $A$, $F$ wie vorher folgt die Existenz von $u_N$ nach Lax-Milgram. AuÃŸerdem finden wir
-\[||u_N||_{H^1(\Omega)} \leq \underbrace{\frac{\alpha_F}{\alpha_0}}_{\text{unabhÃ¤ngig von }N}.\]
+Mit Vorraussetzungen wie an $A$, $F$ wie vorher folgt die Existenz von $u_N$ nach Lax-Milgram. Außerdem finden wir
+\[||u_N||_{H^1(\Omega)} \leq \underbrace{\frac{\alpha_F}{\alpha_0}}_{\text{unabhängig von }N}.\]
 Sei ${\psi_i}_{i \in {1,...,N}}$ eine Basis von $V_N$. D.h. es existiert eine eindutige Darstellung
 \[u_N = \sum_{j=1}^{N}\alpha_j \psi_j \]
 mit $\alpha_j \in \MdR$. Einsetzen ergibt
 \[\sum_{j=1}^{N}\alpha_j A [\psi_j, \psi_i] = F(\psi_i)\] 
-fÃ¼r $i=1,\ldots , N$. $\vec{A}\in\MdR^{N\times N}$, $\vec{A}=[A[\psi_j, \psi_i]]_{ij}$
+für $i=1,\ldots , N$. $\vec{A}\in\MdR^{N\times N}$, $\vec{A}=[A[\psi_j, \psi_i]]_{ij}$
 \[\vec{u} = [x_j]_j,\quad \vec{F}=[F[\psi_j]]_j, \quad \vec{A}\vec{u}=\vec{F} \]
-Dabei handelt es sich fÃ¼r symetrisches $A[\cdot, \cdot]$ um ein lineares und positiv definites Gleichungssystem.
+Dabei handelt es sich für symetrisches $A[\cdot, \cdot]$ um ein lineares und positiv definites Gleichungssystem.
 \begin{definition}[Energienorm]
-FÃ¼r positiv definites $A$ definiert man 
+Für positiv definites $A$ definiert man 
 \[||v||_E := \left( A[v,v]\right)^{\frac{1}{2}}\]
-\subsection{Das Lemma von Cea}
-\begin{theorem}[Cea-Lemma] $A$,$F$ wie in Theorem 3 und $u_N$ die jeweiligen LÃ¶sungen des kontinuierlichen beziehungsweise diskreten Problems. Dann
+Wir nennen $||\cdot ||_E$ die \begriff{Energienorm}.
+\end{definition}
+\section{Das Lemma von Cea}
+\begin{lemma}[Cea-Lemma] $A$,$F$ wie in Theorem 3 und $u_N$ die jeweiligen Lösungen des kontinuierlichen beziehungsweise diskreten Problems. Dann
 \[||u - u_N||_E = \inf_{v_N \in V_N} ||u-v_N||_E\]
-D.h. $u_N$ ist bestmÃ¶glich in $V_N$ in der $||\cdot ||_E$-Topologie.
-\end{theorem}
+D.h. $u_N$ ist bestmöglich in $V_N$ in der $||\cdot ||_E$-Topologie.
+\end{lemma}
 \begin{beweis} $V_N \in V_N$ beliebig. 
 \begin{equation}
 A[u-u_N]=F[v_N]-F[v_N] = 0
 \end{equation}
-Diese Eigenschaft nennt man auch \begriff{Galerkin-OrthogonalitÃ¤t} des Fehlers.\\
+Diese Eigenschaft nennt man auch \begriff{Galerkin-Orthogonalität} des Fehlers.\\
 \begin{eqnarray*}
-||u-u_N||^2_E &= A[u-u_N, u-u_N] \stackrel{\text{(1)}}{=} A[u-u_N, u-n_N]\\
+||u-u_N||^2_E & = A[u-u_N, u-u_N] \stackrel{\text{(1)}}{=} A[u-u_N, u-n_N]\\
 &\stackrel{\text{CSU}}{\leq} ||u-u_N||_E||u-v_N||_E\\
-\rightarrow ||u-u_N||_E \leq ||u-v_N||_E \forall v_N \in V_N\\
+&\rightarrow ||u-u_N||_E \leq ||u-v_N||_E \forall v_N \in V_N\\
 \end{eqnarray*}
-AbschlieÃŸend erfolgt ein GrenzÃ¼bergang zum Infimum.
+Abschließend erfolgt ein Grenzübergang zum Infimum.
 \end{beweis}
 \begin{korollar}[Konvergenz]
 Annahme: Es existiert ein linearer stetiger Operator.:
-\[P_N: V\to V_N: ||v-P_N v ||_V \to 0 \quad (N \to \infty)\]
-fÃ¼r jedes feste $v \in V$. Dann gilt
+\[P_N: V\to V_N: ||v-P_N v ||_V \to 0 \qquad (N \to \infty)\]
+für jedes feste $v \in V$. Dann gilt
 \[||u-u_N||_V \to 0 \quad N \to \infty\]
 \end{korollar}
-\begin{beweis}[KoerzivitÃ¤t]
+\begin{beweis}[Koerzivität]
 \begin{eqnarray*}\alpha_0||u-u_N||_V^2 &\leq ||u-u_N||_E^2 \\
-&= \inf_{v_N\in V_N} ||u-v_N||_E^2 \leq ||u - \underbrace{P_Nu}_{\in V_N}||_E^2 \\ &= \alpha_1 ||u - P_Nu||_V^2 \stackrel{N \to \infty}{\to} 0\end{eqnarray}\\
+&= \inf_{v_N\in V_N} ||u-v_N||_E^2 \leq ||u - \underbrace{P_Nu}_{\in V_N}||_E^2 \\ &= \alpha_1 ||u - P_Nu||_V^2 \stackrel{N \to \infty}{\to} 0\end{eqnarray*}\\
 \end{beweis}
-\begin{bemerkung}[Quasi-OptimalitÃ¤t]
-Im Allgemeinen erhÃ¤lt man das Resultat
+\begin{bemerkung}[Quasi-Optimalität]
+Im Allgemeinen erhält man das Resultat
 \[ ||u-u_N||_V \leq C_S \inf_{v_N \in V_N}||u-v_N||_V \]
-mit einem $C_S > 0$. Diese eigenschaft bezeichnet man als \begriff{Quasi-OptimalitÃ¤t} und $C_S$ als \begriff{StabilitÃ¤tskonstante}. Von Konvergenz sprechen wir in diesem Zusammenhang dann, wenn StabilitÃ¤t und Approximierbarkeit gegeben sind. Dabei ist wichtig, dass von StabilitÃ¤t nur gesprochen wird, wenn $C_S$ nicht von $N$ abhÃ¤ngt.
+mit einem $C_S > 0$. Diese Eigenschaft bezeichnet man als \begriff{Quasi-Optimalität} und $C_S$ als \begriff{Stabilitätskonstante}. Von Konvergenz sprechen wir in diesem Zusammenhang dann, wenn Stabilität und Approximierbarkeit gegeben sind. Dabei ist wichtig, dass von Stabilität nur gesprochen wird, wenn $C_S$ nicht von $N$ abhängt.
 \end{bemerkung}
 Wir werden $P_N$ explizit konstruieren. Typischerweise gilt
 \[u - P_N u ||_V \leq C_I N^{- \kappa}\]
-fÃ¼r ein $\kappa>0$. $C_I$ hÃ¤ngt dabei von $u$ ab. 
+für ein $\kappa>0$. $C_I$ hängt dabei von $u$ ab. 
 Im Allgemeinen gilt
 \[u \in \tilde{V} \sqsubset V = H_0^1(\Omega)\]
-Oft, aber nicht immer, gilt auÃŸerdem
+Oft, aber nicht immer, gilt außerdem
 \[\tilde{V} = H^2(\Omega)\cap H_0^1(\Omega)\]
-$u_N$  ist hier immer die exakte LÃ¶sung des Gleichungssystems. $\vec{A_{ij}}$, $\vec{F_j}$ benÃ¶tigen exakte Integration. \\
-\begin{paragraph}[Standpunkt:] Die Fehler der Grundlegenden Numerik seien geringer als die Verfahrensfehler in den hier vorgestellten Schritten. 
+$u_N$  ist hier immer die exakte Lösung des Gleichungssystems. $\vec{A_{ij}}$, $\vec{F_j}$ benötigen exakte Integration. \\
+\begin{paragraph}{Standpunkt:} Die Fehler der Grundlegenden Numerik seien geringer als die Verfahrensfehler in den hier vorgestellten Schritten. 
 \end{paragraph}
-\begin{paragraph}[Annahme:] das diskrete Problem sei 
-\[A_N[u_N, v_N] = F_N[v_N] \forall v_N \in V_N\]
+\begin{paragraph}{Annahme:} das diskrete Problem sei 
+\[A_N[u_N, v_N] = F_N[v_N] \qquad\forall v_N \in V_N\]
 Im Folgenden muss $V_N \sqsubset V$ muss im Folgenden nicht gelten.
 \end{paragraph}
-\subsection{Das Strang-Lemma}
+\section{Das Strang-Lemma}
 \begin{lemma}[Das Strang-Lemma]
 Seien $A,F$ wie in Theorem 3, $A_N$ symetrisch positiv definit, $F_N$ stetige Linearform. $A_N$ sei definiert auf $V + V_N$ mit 
-\[\beta_0 A[v_N, v_N] \leq A_N[v_n, v_N] \quad \forall v_N \in V_N\]
-fÃ¼r ein $\beta_0 > 0$. Dann gilt:
+\[\beta_0 A[v_N, v_N] \leq A_N[v_n, v_N] \qquad \forall v_N \in V_N\]
+für ein $\beta_0 > 0$. Dann gilt:
+\end{lemma}

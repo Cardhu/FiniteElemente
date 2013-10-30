@@ -19,7 +19,7 @@ u & = u^D & \text{ auf } \partial \Omega\\
 \end{eqnarray*}
 \paragraph{'Quantity of Interest':}
 $\int_W q \cdot n$ wobei $W \subset \partial \Omega$ das Randstück mit interessantem Wärmefluss ist. Die 'Quantity of Interest' beschreibt einen Wärmestrom über einen Teil des Randes.
-\subsection{Elektrostatik}
+\subsubsection{Elektrostatik}
 Wir bezeichnen mit $\rho$ die Ladungsdichte, die ein elektrisches Feld $E$ verursacht. Aus den Maxwellgleichungen folgt:
 \[ -\nabla \cdot (aE) = \rho \]
 wobei $a$ (in der Physik $\epsilon$) die Permittivität darstellt. Oft fordert man ein "`Wirbelfreies"' elektrisches Feld, also $\mathrm rot (E) = \nabla \times E = 0$. Daraus ergibt sich 
@@ -30,3 +30,71 @@ u & = & u^D \text{ auf } \partial \Omega
 \end{eqnarray*}
 Im Fall $\partial \Omega = \Gamma^D \dot{\cup} \Gamma^N$ setzen wir\\
 \[\begin{cases}u^D & \text{ auf } \Gamma^D \\ an \cdot \nabla u \equiv a \cdot \partial_n u = 0 & \text{ auf } \Gamma^N \end{cases}\] 
+\subsubsection{Strömung durch poröse Medien}
+Sei $p$ eine Druckverteilung, $u: \overline{\Omega}\rightarrow\MdR$. \textit{Darcy's law} besagt
+\[ q = -\kappa (\nabla p + \rho g \vec{i_z}) \] 
+wobei $\kappa$ eine Materialkonstante ist. $f$ beschreibe die Quellen und Senken der Strömung. 
+\[ - \nabla \cdot (\kappa (\nabla p + \rho g \vec{i_z})) = f \quad \text{ in } \Omega\]
+Wir definieren die \begriff{piezometrische Höhe}: $u = \frac{p}{\rho g} + x_z$. Wir können das Problem nun in zwei Varianten beschreiben: \begin{enumerate}
+	\item \textbf{Ohne Sättigung:} \[ -\nabla \cdot (\kappa \nabla u) = f \] in $\Omega$ mit Randbedingungen und
+	\item \textbf{Mit Sättigung:} \[ -\nabla \cdot (\kappa(u) \nabla u) = f \] 
+	Diese Form ist nicht linear und beschreibt die sich füllenden Poren durch die veränderliche Materialeigenschaft $\kappa(u)$.
+\end{enumerate}
+
+\subsubsection{Stationäre Wellen}
+Elektromagnetische Wellen bzw. elektrostatische Membranen erfüllen die Wellengleichung, können also wie folgt beschrieben werden:
+\[\Phi: (0,T) \times \overline{\Omega} \rightarrow \MdR, \partial_t^2 \Phi - \nabla\cdot(c^2\nabla\Phi) = 0\] in $\Omega$ mit entsprechenden Randbedingungen. Im Falle einer eingespannten Membran ist diese Randbedingung zum Beispiel konstant $0$. Nun schränken wir den Lösungsraum ein, betrachten also einen Spezialfall. Wir suchen ausschließlich Lösungen der Form
+\[ \Phi(t,x) = u(x)\exp^{i\omega t} \quad \omega \in \MdR, \Re(\Phi), \Im(\Phi)\in \MdR\]
+Durch Einsetzen finden wir
+\[-\omega^2 u - \nabla\cdot(c^2 \nabla u) = 0\]
+Im Fall einer eingespannten Membran und konstanter Wellengeschwindigkeit $c$ ergibt sich zum Beispiel folgendes Problem:
+\[\begin{cases}-\Delta u = \left( \frac{\omega}{c}\right)^2u & \quad \text{ in } \Omega \\ u=0 & \quad \text{ auf }\partial \Omega \end{cases}\]
+Gesucht sind dabei $\omega , u \neq 0$ die das Problem lösen, es handelt sich also um ein Eigenwertproblem. 
+
+\subsubsection{Reaktionsgleichungen}
+Chemische und biologische Reaktionen lassen sich oft folgendermaßen beschreiben: 
+\[u: \overline{\Omega} \rightarrow \MdR \]
+\begin{eqnarray*}
+-\Delta u & = \exp^{-\frac{\lambda}{u}} \quad \text{ in } \Omega
+ u &= u_0 > 0 \quad \text{ auf } \partial \Omega
+\end{eqnarray*}
+wobei $u$ die Temperatur des ablaufenden Prozesses beschreibt. 
+
+\subsubsection{Minimalflächengleichung}
+$u: \overline{\Omega} \rightarrow \MdR$, $\Omega \subset \MdR^2$, $F: \Omega \rightarrow \MdR^3, F:[x_1, x_2] \to [x_1, x_2, u(x_1, x_2)]$
+\begin{eqnarray*}
+A(u) &= \int_{\Omega} | \partial_1 F\times \partial_2 F | \\
+&= \int_{\Omega} \sqrt{1 + |\nabla u|^2}
+\end{eqnarray*} 
+mit Randbedingungen der Form $u(x) = g(x) \forall x \in \partial \Omega$. Ein Minimum erfüllt dann die Bedingung
+\[- \nabla \cdot \underbrace{\left( \frac{\nabla u}{1 + |\nabla u|^2}\right)}_{= \kappa(\nabla u) \nabla u} = 0 \quad \text{ in }\Omega\] 
+Dabei ergibt sich das unangenehme Phänomen, dass $\nabla u$ in jedem Punkt $\infty$ sein kann, obwohl $u$ bekannt ist. Ein Beispiel hierfür ist eine Halbkugel.
+
+\subsubsection{Inkompressible Navier-Stokes-Gleichungen}
+Modellierung: Transportterm
+\[ q = \underbrace{-\nu \nabla u}_{\text{Diffusion}} + \underbrace{bu}_{\text{Transport mit dem Fluss }b: \Omega \rightarrow \MdR^3} \]
+\[- \nabla \cdot (\nu \nabla u) + \nabla \cdot(bu) = 0\]
+Inkompressibel bedeutet $\nabla \cdot b = 0$.\\
+\[\Rightarrow - \nabla \cdot (\nu \cdot \nabla u)+ b\cdot \nabla u = 0\]
+Da diese Gleichung einen Transport und einen Diffusionsterm enthält nennt man sie auch die \begriff{Transport-Diffusions-Gleichung}. Navier-Stokes (für konstantes $\nu$):
+\begin{eqnarray*}
+\partial_t u - \nu \Delta u + u \cdot \nabla u &= f \quad \text{ in } \Omega\\
+\nabla \cdot u &= 0 \quad \text{ in } \Omega
+\end{eqnarray*}
+mit entsprechenden Rand- und Anfangsbedingungen.
+
+\section{Das Dirichlet-Randwertproblem}
+Sei $\Omega \subset \MdR^d$ offen und beschränkt. Seien weiter $a,c,f: \overline{\Omega}\rightarrow\MdR$ und $u^D: \partial \Omega \rightarrow \MdR$. Das \begriff{lineare Randwertproblem} in Divergenzform lautet:
+\begin{eqnarray}
+-\nabla ( a\nabla u) + cu &=f \text{ in } \Omega\\
+u &= u^D \text{ auf }\partial \Omega
+\label{lineares RWP}
+\end{eqnarray}
+der Spezialfall $a=1, c=0$ führt auf 
+\begin{eqnarray}
+-\Delta u &= f \text{ in } \Omega\\
+u &= u^D \text{ auf } \partial \Omega
+\label{Poissonproblem}
+\end{eqnarray}
+das \begriff{Poisson-Problem}.\\
+Die Vorgabe von $u=u^D$ auf $\partial \Omega$ heißt \begriff{Dirichlet-Problem}. Man kann eine schwache Form wie folgt herleiten: Multipliziere die Differentialgleichung mit einer Testfunktion $v \in$ 
